@@ -212,17 +212,18 @@
               </div>
               <!-- .end .column -->
               <div class="column">
-                <pre><span>composer require --dev phpunit/phpunit</span>;
+                <pre>
+                  <span>composer require --dev phpunit/phpunit</span>;
                   <span></span>
-  <span class="code-comment">&lt;!-- Verification de l'install --&gt;</span>
-  <span></span>
-  <span>A la racine du projet : </span>
-  <span> vendor/bin/phpunit --version</span>
-  <span></span>
-  <span class="code-comment">&lt;!-- Resultat --&gt;</span>
-  <span></span>
-  <span>PHPUnit 8.0.0 by Sebastian Bergmann and contributors.</span>
-</pre>
+                  <span class="code-comment">&lt;!-- Verification de l'install --&gt;</span>
+                  <span></span>
+                  <span>A la racine du projet : </span>
+                  <span> vendor/bin/phpunit --version</span>
+                  <span></span>
+                  <span class="code-comment">&lt;!-- Resultat --&gt;</span>
+                  <span></span>
+                  <span>PHPUnit 8.0.0 by Sebastian Bergmann and contributors.</span>
+                </pre>
               </div>
               <!-- .end .column -->
             </div>
@@ -230,6 +231,138 @@
           </div>
           <!-- .end .wrap -->
         </section>
+        <section>
+          <div class="">
+            <div class="">
+            <h2>Les règles de PHPUnit dans Drupal 8</h2>
+            <ul>
+              <li>
+                 Les classes test doivent etre dans un dossier Unit.
+              </li>
+              <li>
+                  Les classes test doivent heritées de la classe UnitTestCase.
+              </li>
+              <li>
+                  Les classes test doivent avoir comme patern *Test.php
+              </li>
+              <li>
+                  Les functions et attributs de la classe Test doivent etre public
+              </li>
+              <li>
+                  Les methodes doivent avoir comme patern test*, ex : testSetName().
+              </li>
+            </ul>
+            </div>
+            <div>
+              <pre>
+                ../modules/custom
+                --phpunit_example
+                ----phpunit_example.info.yml
+                ----phpunit_example.module
+                ----src
+                ------Toto.php
+                ----tests
+                ------src
+                --------Unit
+                ----------TotoTest.php
+                </pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="">
+            <h2>Exemple : La classe Toto.php<h2>
+                <pre class="language-clojure">
+              <code>
+                  &lt?php
+                  namespace Drupal\phpunit_example;
+                  /**
+                   * Defines a Toto class.
+                   */
+                  class Toto {
+                    private $length = 0;
+                    /**
+                     * @param int $length
+                     */
+                    public function setLength(int $length) {
+                      $this->length = $length;
+                    }
+                    /**
+                     * @return int
+                     *   The length of the unit.
+                     */
+                    public function getLength() {
+                      return $this->length;
+                    }
+                  }
+                </code>
+                </pre>
+          </div>
+        </section>
+        <section>
+            <div class="">
+              <h2>Exemple : La classe TotoTest.php<h2>
+                  <pre class="language-clojure">
+                <code>
+                    &lt?php
+                    use Drupal\Tests\UnitTestCase;
+                    use Drupal\projetTest\Lissabon;
+                    require __DIR__ . "/../../../src/Toto.php";
+                    
+                    class TotoTest extends UnitTestCase {
+                      protected $toto;
+                     
+                      public function setUp() {
+                        $this->toto = new Toto();
+                      }
+                      
+                      public function tearDown() {
+                        unset($this->toto);
+                      }
+                      
+                      public function testSetLenght() {
+                        $this->assertEquals('0', $this->toto->getTotal());
+                        $this->toto->setTotal(366);
+                        $this->assertEquals(366, $this->toto->getTotal());
+                      }
+                      
+                      public function testGetLenght() {
+                        $this->toto->setTotal(366);
+                        $this->assertNotEquals(200, $this->toto->getTotal());
+                      }
+                    }
+                  </code>
+                  </pre>
+            </div>
+          </section>
+          <section>
+            <div class="">
+              <h2>Explications de TotoTest.php</h2>
+              <p class="text-intro">Dans PhpUnit il y a des methodes qui permettent d'initialiser les tests </p>
+              <ul>
+                <li><h3>SetUp</h3>
+                  <p>Il est appelé devant chaque méthode de test et permet d'initialiser l'objet $toto qui sera utilisé dans tous les tests .</p>
+                </li>
+                <li><h3> tearDown()</h3>
+                  <p>Il est appelé devant chaque méthode de test et permet de "nettoyer " l'objet apres chaque fonction de tests.</p>
+                </li>
+                <li><h3> testSetLenght()</h3>
+                  <p>Est la function test de setLength().</p>
+                </li>
+                <li><h3> testGetLenght()</h3>
+                  <p>Est la function test de getLength().</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <div class="">
+            <h2>Annotations</h2>
+            </div>
+          </section>
+          <section>
+            
+          </section>
         <section>
           <div class="wrap">
             <h2>Features</h2>

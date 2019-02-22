@@ -111,17 +111,26 @@
         <section>
           <!--.wrap = container (width: 90%) -->
           <div class="wrap size-50 aligncenter">
-            <h2><strong>Why WebSlides?</strong></h2>
-            <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html" title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p>
+            <h2><strong>Pourquoi les tests unitaires ? </strong></h2>
             <div class="bg-white shadow">
               <ul class="flexblock reasons">
                 <li>
-                  <h2>An opportunity to engage.</h2>
-                  <p>WebSlides is about good karma. This is about telling the story, and sharing it in a beautiful way. HTML and CSS as narrative elements.</p>
+                  <h2>Gain de temps - Réduire les couts </h2>
+                  <p>Permet de trouver les bugs plus facilement et donc d'éviter de compiler des bugs qui seront très difficiles à identifier par la suite.</p>
                 </li>
                 <li>
-                  <h2>Work better, faster.</h2>
-                  <p>Designers, marketers, and journalists can now focus on the content. Simply <a href="demos/index.html" title="WebSlides Demos">choose a demo</a> and customize it in minutes.</p>
+                  <h2>Evite les regressions par la suite - Facilite les changements (Update - Delete)</h2>
+                  <p>Les tests unitaires détectent les modifications susceptibles de rompre un contrat de conception. Ils aident donc à maintenir et à changer le code.
+                    Les tests unitaires réduisent les défauts des nouvelles fonctionnalités ou réduisent les bugs lors du changement des fonctionnalités existantes.
+                  </p>
+                </li>
+                <li>
+                  <h2>Fournit de la documentation</h2>
+                  <p>Les développeurs qui souhaitent savoir quelles fonctionnalités sont fournies par une unité et comment les utiliser peuvent consulter les tests d’unités pour acquérir une compréhension de base de l’interface de l’appareil (API).</p>
+                </li>
+                <li>
+                  <h2>Rend le process Agile </h2>
+                  <p>Unit testing really goes hand-in-hand with agile programming of all flavors because it builds in tests that allow you to make changes more easily. In other words, unit tests facilitate safe refactoring</p>
                 </li>
               </ul>
             </div>
@@ -130,28 +139,89 @@
           <!-- .end .wrap -->
         </section>
         <section>
+          <div class="wrap">
+              <div class="grid vertical-align">
+            <h2><strong> Tests Traditionels VS Unit Test</strong></h2>
+            <div class="column">
+              <h3>Tests traditionnels</h3>
+              <ul>
+                <li>
+                  Test le projet dans son ensemble 
+                </li>
+                <li>
+                 Tous les composants sont rarements testés
+                </li>
+                <li>
+                  Difficile d'isoler un bug
+                </li>
+              </ul>
+              <div class="column">
+                <h3>Tests Unitaires</h3>
+                <ul>
+                  <li>
+                    Test chaque fonctionnalités - partie individuellement
+                  </li>
+                  <li>
+                    Les erreurs sont trouvées plus tot
+                  </li>
+                  <li>
+                    Le scopes sont plus petites. 
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrap size-50 aligncenter">
+          <h2><strong>Caratéristiques d'un UT</strong></h2>
+          <ul>
+            <li>
+              <h3>Rapide et petit</h3>
+              <p>Idealement on les realise pendant la creation de la fonctionnalité (ou avant en TDD).Rapide d'execution. </p>
+            </li>
+            <li>
+                <h3>Automatisé</h3>
+                <p>Les Tests unitaires sont automatisés et ne demandent pas d'action manuel</p>
+            </li>
+            <li>
+                <h3>Indépendant</h3>
+                <p>Il doit etre independant des facteurs externes et des autres tests pour garantir leur robutesse et l'integrité du code </p>
+            </li>
+            <li>
+                <h3>Un nom de test comprehensible  </h3>
+                <p>test[Comportement a tester]. Ex : testSaveFile()</p>
+            </li>
+            <li>
+                <h3>Un nom de classe   </h3>
+                <p>NomdelaClasseTest. Ex : Si la classe a tester est Toto la class test est TotoTest</p>
+            </li>
+            <li>
+                <h3>Un nom de classe   </h3>
+                <p>NomdelaClasseTest. Ex : Si la classe a tester est Toto la class test est TotoTest</p>
+            </li>
+          </ul>
+          </div>
+        </section>
+        <section>
           <!--.wrap = container (width: 90%) -->
           <div class="wrap">
             <div class="grid vertical-align">
               <div class="column">
-                <h3><strong>WebSlides is really easy</strong></h3>
-                <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide. </p>
-                <p>Code is clean and scalable. It uses <strong>intuitive markup</strong> with popular naming conventions. There's no need to overuse classes or nesting. <strong>Making an HTML presentation has never been so fast</strong>.</p>
+                <h3><strong>Les tests unitaires avec PHP</strong></h3>
+                <p class="text-intro">Utilisation de <strong>PhpUnit</strong>.</p>
               </div>
               <!-- .end .column -->
               <div class="column">
-                <pre>&lt;article id="webslides"&gt;
-  <span class="code-comment">&lt;!-- Slide 1 --&gt;</span>
-  &lt;section&gt;
-    &lt;h1&gt;Design for trust&lt;/h1&gt;
-  &lt;/section&gt;
-  <span class="code-comment">&lt;!-- Slide 2 --&gt;</span>
-  &lt;section class="bg-primary"&gt;
-    &lt;div class="wrap"&gt;
-      &lt;h2&gt;.wrap = container (width: 90%)&lt;/h2&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-&lt;/article&gt;
+                <pre><span>composer require --dev phpunit/phpunit</span>;
+                  <span></span>
+  <span class="code-comment">&lt;!-- Verification de l'install --&gt;</span>
+  <span></span>
+  <span>A la racine du projet : </span>
+  <span> vendor/bin/phpunit --version</span>
+  <span></span>
+  <span class="code-comment">&lt;!-- Resultat --&gt;</span>
+  <span></span>
+  <span>PHPUnit 8.0.0 by Sebastian Bergmann and contributors.</span>
 </pre>
               </div>
               <!-- .end .column -->

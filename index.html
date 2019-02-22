@@ -306,7 +306,7 @@
                 <code>
                     &lt?php
                     use Drupal\Tests\UnitTestCase;
-                    use Drupal\projetTest\Lissabon;
+                    use Drupal\projetTest\Toto;
                     require __DIR__ . "/../../../src/Toto.php";
                     
                     class TotoTest extends UnitTestCase {
@@ -361,7 +361,49 @@
             </div>
           </section>
           <section>
-            
+            <div class="">
+              <h2>Lancer PhpUnit</h2>
+              <div class="column">
+                <h3>Configurer son PhpUnit.xml</h3>
+                <p>Dans le dossier core , copier coller le fichier PhpUnit.xml.dist et renommer en PhpUnit.xml, copier le code suivant : </p>
+                <pre>
+                    &lt?xml version="1.0" encoding="UTF-8"?&gt
+
+                    &ltphpunit bootstrap="tests/bootstrap.php"
+                           backupGlobals="false"
+                           colors="true"
+                           verbose="true"
+                           beStrictAboutTestsThatDoNotTestAnything="true"
+                           beStrictAboutOutputDuringTests="true"
+                           beStrictAboutChangesToGlobalState="true"&gt
+
+                    &lttestsuites&gt
+                      &lttestsuite name="toto"&gt
+                        &ltdirectory>../sites/all/modules/custom &lt/directory&gt
+                      &lt/testsuite&gt
+                    &lt/testsuites&gt
+                    &lt/phpunit&gt
+                  </pre>
+              </div>
+              <div class="column">
+                <pre>
+                  Permet d'inclure les fichiers que l'on veut tester 
+                    &lttestsuite name="toto"&gt
+                      &ltdirectory&gt modules/custom/phpunit_example/tests &lt/directory&gt
+                      &lt/testsuite&gt
+                </pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            C'est quoi un test unitaire.
+            Base de donnees.
+            Tout tester et tester un name specifique
+            Etats possibles d'un test
+            Lien vers repo avec code. 
+            TDD.
+            refactoring.
+            Integration continue.
           </section>
         <section>
           <div class="wrap">

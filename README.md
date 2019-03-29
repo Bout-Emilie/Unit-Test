@@ -23,16 +23,14 @@ Et comme le temps c'est de l'argent on  reduit donc les couts. Ils permettent de
 - **Fournit de la documentation** :
 Les développeurs qui souhaitent savoir quelles fonctionnalités sont fournies par une unité et comment les utiliser peuvent consulter les tests d’unités pour acquérir une compréhension de base de l’interface de l’appareil.
 
-- **Rend le process Agile** :
-Unit testing really goes hand-in-hand with agile programming of all flavors because it builds in tests that allow you to make changes more easily. In other words, unit tests facilitate safe refactoring
 
 - **Code plus modulaire** : 
-Le principal pré-requis au test est la modularité du code. Une idée simple : diviser pour mieux régner. Un code modulaire est bien plus robuste qu'un imbroglio de règles de gestion et de traitements. Plus il est modulaire, plus un code est facile à tester unitairement…
+Le principal pré-requis au test est la modularité du code. Une idée simple : diviser pour mieux régner. Un code modulaire est bien plus robuste qu'une multitude de règles de gestion et de traitements. Plus il est modulaire, plus un code est facile à tester unitairement…
 
 ## Caractéristiques d'un bon test unitaire 
 
 
-- **En amont**: crée lors des développements, pendant ou avant idéalement ( TDD : TEST DRIVEN DEVELOPMENT)
+- **En amont**: crée lors des développements, pendant ou avant idéalement (TDD : TEST DRIVEN DEVELOPMENT)
 - **Deterministe**: c’est-à-dire qu’exécuté plusieurs fois, il devra toujours retourner le même résultat.
 - **Unitaire**: Independant des autres tests et ne faire appel a aucun composant exterieur. Si c'est le cas, il est nécessaire de les simuler en les mockant par example.
 - **Rapide**: Rapide a executer
@@ -60,31 +58,10 @@ else{
 }
 ```
 
-
-## Les avantages des tests unitaires:
-
-
-Mais quel est l'avantage d'un test unitaire si je dois écrire plus de code et donc perdre du temps ?
-
-- **Gain de temps future** : 
-Et comme le temps c'est de l'argent -> reduction des couts. Permet de trouver les bugs plus facilement et donc d'éviter de compiler des bugs qui seront très difficiles à identifier par la suite.
-
-- **Eviter les regressions** : Facilite les changements (Update - Delete)
-
-    Les tests unitaires détectent les modifications susceptibles de rompre un contrat de conception. Ils aident donc à maintenir et à changer le code. Les tests unitaires réduisent les défauts des nouvelles fonctionnalités ou réduisent les bugs lors du changement des fonctionnalités existantes. 
-
-- **Fournit de la documentation** :
-Les développeurs qui souhaitent savoir quelles fonctionnalités sont fournies par une unité et comment les utiliser peuvent consulter les tests d’unités pour acquérir une compréhension de base de l’interface de l’appareil (API).
-
-- **Rend le process Agile** :
-Unit testing really goes hand-in-hand with agile programming of all flavors because it builds in tests that allow you to make changes more easily. In other words, unit tests facilitate safe refactoring
-
-- **Code plus modulaire** : 
-Le principal pré-requis au test est la modularité du code. Une idée simple : diviser pour mieux régner. Un code modulaire est bien plus robuste qu'un imbroglio de règles de gestion et de traitements. Plus il est modulaire, plus un code est facile à tester unitairement…
-
+ 
 ## L'isolation d'un test ? 
 
-Parfois un test a quand meme besoin de faire des appels aux services, aux bases de données, fichiers ou d'autre classe.Cependant comme un test ne doit dépendre d'aucune sources externes, nous avons la possibilité de mocker les données. 
+Parfois un test a quand meme besoin de faire des appels aux services, aux bases de données, fichiers ou d'autres classes. Cependant comme un test ne doit dépendre d'aucune sources externes, nous avons la possibilité de mocker les données. 
 
 Un mock est un objet qui permet de simuler un objet réel tel que la base de données, un web service…
 
@@ -94,7 +71,7 @@ Les frameworks de mock permettent de créer dynamiquement des objets généralem
 
 **Oui mais ...**
 
-Voici un test unitaire permettant de tester la function addToTotal(
+Voici un test unitaire permettant de tester la function addToTotal qui permet d'additionner 2 nombres ensembles.
 
 
   ```php
@@ -105,7 +82,7 @@ Voici un test unitaire permettant de tester la function addToTotal(
   }
   ```
 
-- `$this->addition->setTotal(200);` permet de changer la valeur de notre "objet" addition a 200
+- `$this->addition->setTotal(200);` permet de changer la valeur de notre "objet" addition à 200
 - `$$this->addition->addToTotal(166);` permet d'ajouter la valeur 166 à "l'objet " addition 
 -`$this->assertEquals(366, $this->addition->getTotal());` permet de comparer la valeur obtenu avec la methode `addToTotal` avec le resultat voulue 366. 
 
@@ -151,7 +128,7 @@ PHPUnit 8.0.0 by Sebastian Bergmann and contributors.
 - Les classes test doivent heritées de la classe UnitTestCase.
 - Les classes test doivent avoir comme patern *Test.php 
 - Les functions et attributs de la classe Test doivent etre public 
-- Les methodes doivent avoir comme patern test*, ex : testSetName().
+- Les méthodes doivent avoir comme patern test*, ex : testSetName().
 
 
 
